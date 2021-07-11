@@ -8,45 +8,67 @@
 		</div>
 		<div class="details">
 			{% include 'mainapp/includes/inc_category_menu.html' %}
-			<div class="details-products">
-				<div class="details-slider">
-					<div class="slider-product">
-						<img src="{% static 'djangoshop/img/slider1.jpg' %}">
-					</div>
-					<div class="slider-control">
-						<div class="block">
-							<a href="#"><img src="{% static 'djangoshop/img/controll.jpg' %}" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
-						<div class="block">
-							<a href="#"><img src="{% static 'djangoshop/img/controll1.jpg' %}" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
-						<div class="block">
-							<a href="#"><img src="{% static 'djangoshop/img/controll2.jpg' %}" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
-					</div>
-				</div>
+<!--			<div class="details-products">-->
+<!--				<div class="details-slider">-->
+<!--					<div class="slider-product">-->
+<!--						<img src="{% static 'djangoshop/img/slider1.jpg' %}">-->
+<!--					</div>-->
+<!--					<div class="slider-control">-->
+<!--						<div class="block">-->
+<!--							<a href="#"><img src="{% static 'djangoshop/img/controll.jpg' %}" alt="">-->
+<!--								<div class="text"></div>-->
+<!--							</a>-->
+<!--						</div>-->
+<!--						<div class="block">-->
+<!--							<a href="#"><img src="{% static 'djangoshop/img/controll1.jpg' %}" alt="">-->
+<!--								<div class="text"></div>-->
+<!--							</a>-->
+<!--						</div>-->
+<!--						<div class="block">-->
+<!--							<a href="#"><img src="{% static 'djangoshop/img/controll2.jpg' %}" alt="">-->
+<!--								<div class="text"></div>-->
+<!--							</a>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!---->
+<!--				<div class="description">-->
+<!--					<h3 class="big-bold">Отличный стул</h3>-->
+<!--					<h3 class="red">горячее предложение</h3>-->
+<!--					<p class="price"> 2585.9 <span>руб</span></p>-->
+<!--					<a href="#" class="red-button">-->
+<!--						заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>-->
+<!--					</a>-->
+<!--					<div class="description-text">-->
+<!--						<p>Расположитесь комфортно.</p> -->
+<!--						<p>Отличное качество материалов-->
+<!--						позволит вам это.</p> -->
+<!--						<p>Различные цвета</p>-->
+<!--						<p>высочайший уровень-->
+<!--						эргономики и прочность.</p>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
 
-				<div class="description">
-					<h3 class="big-bold">Отличный стул</h3>
-					<h3 class="red">горячее предложение</h3>
-					<p class="price"> 2585.9 <span>руб</span></p>
-					<a href="#" class="red-button">
-						заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
-					</a>
-					<div class="description-text">
-						<p>Расположитесь комфортно.</p> 
-						<p>Отличное качество материалов
-						позволит вам это.</p> 
-						<p>Различные цвета</p>
-						<p>высочайший уровень
-						эргономики и прочность.</p>
-					</div>
+			<div class="featured">
+				<div class="featured-menu">
+						<a class="active" href="#">Популярные</a><a href="#">Новинки</a>
+				</div>
+				<a class="explore" href="#">показать все <img src="{% static 'djangoshop/img/arrow.png' %}" alt=""></a>
+				<div class="clearfix">
+				</div>
+				<div class="tab-content">
+					{% for product in products %}
+						<div class="block">
+							<a href="{% url 'basket:add' product.pk %}"><img src="/media/{{product.image}}" alt="" 	style="height: 270px; width: 270px;">
+								<div class="text">
+									<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
+									<h4>{{product.name}}</h4>
+									<p>{{product.short_desc}}</p>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
 
@@ -57,7 +79,7 @@
 				</div>
 				<div class="related-products clearfix">
 					<div class="block">
-						<a href="#"><img src="{% static 'djangoshop/img/product-11.jpg' %}" alt="">
+						<a href="#"><img src="{% static 'djangoshop/img/product-11.jpg' %}" alt="" 	style="height: 370px; width: 370px;">
 							<div class="text">
 								<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
 								<h4>Стул повышенного качества</h4>
@@ -65,25 +87,17 @@
 							</div>
 						</a>
 					</div>
-					<div class="block">
-						<a href="#"><img src="{% static 'djangoshop/img/product-21.jpg' %}" alt="">
-							<div class="text">
-								<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
-								<h4>Стул повышенного качества</h4>
-								<p>Не оторваться. </p>
-							</div>
-						</a>
-					</div>
-					<div class="block">
-						<a href="#"><img src="{% static 'djangoshop/img/product-31.jpg' %}" alt="">
-							<div class="text">
-								<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
-								<h4>Стул повышенного качества</h4>
-								<p>Не оторваться. </p>
-							</div>
-						</a>
-					</div>
-
+					{% for product in same_products %}
+						<div class="block">
+							<a href="#"><img src="/media/{{product.image}}" alt=""	style="height: 370px; width: 370px;">
+								<div class="text">
+									<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
+									<h4>{{product.name}}</h4>
+									<p>{{product.short_desc}}</p>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>

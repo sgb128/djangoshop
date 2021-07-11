@@ -2,7 +2,7 @@
     <a href="{% url 'index' %}" class="logo"></a>
     <ul class="menu">
         <li><a href="{% url 'index' %}" {% if request.path == '/' %}class="active"{% endif %}>домой</a></li>
-        <li><a href="{% url 'products' %}" {% if request.path == '/products/' %}class="active"{% endif %}>продукты</a></li>
+        <li><a href="{% url 'products:products' %}" {% if request.path == '/products/' %}class="active"{% endif %}>продукты</a></li>
         <li><a href="{% url 'contacts' %}"{% if request.path == '/contacts/' %}class="active"{% endif %}>контакты</a></li>
         {% if user.is_authenticated %}
             <li>
@@ -20,5 +20,13 @@
         </li>
     </ul>
     <a href="#" class="search"></a>
-    {% if request.path == '/products/' or request.path == '/contacts/' %}<a href="#" class="basket"></a>{% endif %}
+    {% if request.path == '/products/' or request.path == '/contacts/' %}
+        <a href="{% url 'basket:view' %}" class="basket">
+            <span>
+                {% if basket %}
+                    {{ basket|length }}
+                {% endif %}
+            </span>
+        </a>
+    {% endif %}
 </div>

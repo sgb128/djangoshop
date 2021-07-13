@@ -26,5 +26,6 @@ def basket_add(request, pk):
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
 def basket_remove(request, pk):
     return render(request, 'basketapp/basket.html')

@@ -1,16 +1,20 @@
 from django.db import models
 
+
 class ProductCategory(models.Model):
     name = models.CharField(verbose_name='имя', max_length=64, unique=True)
     description = models.TextField(verbose_name='Описание', blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
+
     def __str__(self):
         return self.name or f'Category with - {self.pk}'
 
     class Meta:
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
+
 
 class Product(models.Model):
     category = models.ForeignKey(
@@ -44,6 +48,7 @@ class Product(models.Model):
     description = models.TextField(verbose_name='Описание', blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name or f'Category with - {self.pk}'

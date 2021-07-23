@@ -37,8 +37,8 @@
                         {% for product in objects %}
                             <tr {% if product.is_deleted %} style="opacity: 0.5;" {% endif %}>
                                 <td><a href="{% url 'admin_staff:product_read' product.id %}" style="color: dodgerblue">{{ product.name }}</a></td>
-                                <td>{{ product.name }}</td>
                                 <td>{{ product.short_desc }}</td>
+                                <td>{{ product.quantity }}</td>
                                 <td>{{ product.price }}</td>
                                 <td>
                                     <a href="{% url 'admin_staff:product_update' pk=product.id %}">

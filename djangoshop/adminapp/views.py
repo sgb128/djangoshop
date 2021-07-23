@@ -70,6 +70,7 @@ class UserCreateView(CreateView):
 #
 #     return render(request, 'adminapp/user_create.html', context)
 
+
 def user_update(request, pk):
     title = 'пользователи/редактирование'
 

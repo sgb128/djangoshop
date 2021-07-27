@@ -97,8 +97,6 @@ def user_delete(request, pk):
     title = 'пользователи/удаление'
     user = get_object_or_404(ShopUser, pk=pk)
     if request.method == 'POST':
-        # user.delete()
-        # вместо удаления лучше сделаем неактивным
         user.is_deleted = True
         user.is_active = False
         user.save()

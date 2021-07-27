@@ -3,7 +3,7 @@ import adminapp.views as adminapp
 from adminapp.views import UsersListView, UserCreateView
 
 
-app_name = 'admin_staff'
+app_name = 'adminapp'
 
 urlpatterns = [
     path('users/create/', UserCreateView.as_view(), name='user_create'),

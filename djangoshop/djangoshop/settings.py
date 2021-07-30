@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import json
 import os
 from pathlib import Path
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d&6fytc2(ux@vbglrb*8=udb4fsvzh5+1&dp^26#-w3rouv$t^'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +45,8 @@ INSTALLED_APPS = [
     'authapp',
     'basketapp',
     'adminapp',
+
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -147,5 +153,19 @@ EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_PORT = '465'
 EMAIL_HOST_USER = '157e66fcc40735'
 EMAIL_HOST_PASSWORD = '64ba392ec49f97'
-
 EMAIL_USE_TLS = True
+
+# GIT_HUB_ID = '6a01287be54660261eec'
+# GIT_HUB_KEY_SECRET = '4d7c7148d18532babde62524410917785235facc'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.github.GithubOAuth2',
+    # 'social_auth.backends.contrib.github.GithubBackend',
+)
+
+# with open('github.json', 'r') as file:
+#     GH = json.load(file)
+
+GITHUB_APP_ID = env('GITHUB_APP_ID')
+GITHUB_API_SECRET = env('GITHUB_API_SECRET')

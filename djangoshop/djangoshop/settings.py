@@ -164,6 +164,7 @@ AUTHENTICATION_BACKENDS = (
     # 'social_auth.backends.contrib.github.GithubBackend',
 )
 
+
 # with open('github.json', 'r') as file:
 #     GH = json.load(file)
 

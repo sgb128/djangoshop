@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'authapp',
     'basketapp',
     'adminapp',
+    'ordersapp',
 
     'social_django',
 ]
@@ -149,10 +150,10 @@ LOGIN_URL = '/auth/login/'
 
 DOMAIN_NAME = 'http://127.0.0.1:8000'
 
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_PORT = '465'
-EMAIL_HOST_USER = '157e66fcc40735'
-EMAIL_HOST_PASSWORD = '64ba392ec49f97'
 EMAIL_USE_TLS = True
 
 # GIT_HUB_ID = '6a01287be54660261eec'

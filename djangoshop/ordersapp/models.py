@@ -45,7 +45,7 @@ class Order(models.Model):
     )
 
     def __str__(self):
-        return  f'Текущий заказ: {self.id}'
+        return f'Текущий заказ: {self.id}'
 
     def get_total_quantity(self):
         items = self.orderitems.select_related()

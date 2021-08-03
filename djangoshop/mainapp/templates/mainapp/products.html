@@ -1,10 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'djangoshop/base.html' %}
 {% load static %}
-{% block title %}Каталог{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'mainapp/style.css' %}">
+{% endblock %}
+
 {% block content %}
-	<div class="container">
+
 		<div class="details">
 			{% include 'mainapp/includes/inc_category_menu.html' %}
+
 			<div class="details-products">
 				<div class="details-slider">
 					<div class="slider-product text-center">
@@ -41,7 +46,7 @@
 					</div>
 				</div>
 			</div>
-{% if products %}
+		{% if products %}
 		<div class="featured mt-5">
 			{% if category %}
 				<h2>Категория: {{ category.name|title }}</h2>
@@ -63,58 +68,58 @@
 			  {% endif %}
 			</div>
 			<div class="featured-menu">
-						<a class="active" href="#">Популярные</a><a href="#">Новинки</a>
+				<a class="active" href="#">Популярные</a><a href="#">Новинки</a>
 			</div>
 			<a class="explore" href="#">показать все <img src="{% static 'djangoshop/img/arrow.png' %}" alt=""></a>
 			<div class="clearfix">
 			</div>
 			<div class="tab-content">
 				{% for product in products %}
-				<div class="block">
-					<a href="{% url 'products:product' product.pk %}"><img src="/media/{{product.image}}" alt="">
-						<div class="text">
-							<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
-							<h4>{{product.name}}</h4>
-							<p>{{product.short_desc}}</p>
-						</div>
-					</a>
-				</div>
+					<div class="block">
+						<a href="{% url 'products:product' product.pk %}"><img src="/media/{{product.image}}" alt="">
+							<div class="text">
+								<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
+								<h4>{{product.name}}</h4>
+								<p>{{product.short_desc}}. </p>
+							</div>
+						</a>
+					</div>
 				{% endfor %}
 			</div>
 		</div>
+            {% if same_products %}
 			<div class="related">
 				<div class="title clearfix">
 					<h2>Похожие продукты</h2>
-					<a class="explore" href="#">показать все <img src="{% static 'djangoshop/img/arrow.png' %}" alt=""></a>
+					<a class="explore" href="#">показать все <img src="/static/djangoshop/img/arrow.png" alt=""></a>
 				</div>
 				<div class="related-products clearfix">
 					<div class="block">
-						<a href="#"><img src="{% static 'djangoshop/img/product-11.jpg' %}" alt="" 	style="height: 370px; width: 370px;">
+						<a href="#"><img src="/media/{{product.image}}" alt="">
 							<div class="text">
-								<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
+								<img src="img/icon-hover.png" alt="img">
 								<h4>Стул повышенного качества</h4>
 								<p>Не оторваться. </p>
 							</div>
 						</a>
 					</div>
-					{% for product in same_products %}
-						<div class="block">
-							<a href="#"><img src="/media/{{product.image}}" alt=""	style="height: 370px; width: 370px;">
-								<div class="text">
-									<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
-									<h4>{{product.name}}</h4>
-									<p>{{product.short_desc}}</p>
-								</div>
-							</a>
-						</div>
+
+					{% for prod in same_products %}
+					<div class="block">
+						<a href="#"><img src="/media/{{prod.image}}" alt="">
+							<div class="text">
+								<img src="{% static 'djangoshop/img/icon-hover.png' %}" alt="img">
+								<h4>{{prod.name}}</h4>
+								<p>{{prod.description}}</p>
+							</div>
+						</a>
+					</div>
 					{% endfor %}
+
 				</div>
 			</div>
+                {% endif %}
 		</div>
-
-		<div class="clr"></div>
-
-	</div>
 	{% else %}
 
 	{% endif %}

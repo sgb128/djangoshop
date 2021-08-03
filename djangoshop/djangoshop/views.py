@@ -10,8 +10,8 @@ def index(request):
         'title': title,
         'products': products,
     }
-    return render(request, 'index.html', context=context)
+    return render(request, 'djangoshop/index.html', context=context)
 
 
 def contacts(request):
-    return render(request, 'contact.html')
+    return render(request, 'djangoshop/contact.html')

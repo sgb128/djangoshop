@@ -15,6 +15,7 @@ from ordersapp.forms import OrderItemForm
 from ordersapp.models import Order, OrderItem
 
 
+
 class OrderList(LoginRequiredMixin, ListView):
     model = Order
 

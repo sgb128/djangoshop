@@ -1,0 +1,1 @@
+puthon manage.py runserver

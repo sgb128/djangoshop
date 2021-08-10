@@ -1,0 +1,13 @@
+http://194.58.97.6:80
+http://194.58.97.6:80/products
+http://194.58.97.6:80/products/category/6
+http://194.58.97.6:80/products/category/7/page/2
+http://194.58.97.6:80/products/category/8/page/2
+http://194.58.97.6:80/products/category/9/page/2
+http://194.58.97.6:80/products/category/10/page/2
+http://194.58.97.6:80/products/product/15
+http://194.58.97.6:80/products/product/20
+http://194.58.97.6:80/products/product/11
+http://194.58.97.6:80/products/product/16
+http://194.58.97.6:80/products/product/17
+http://194.58.97.6:80/products/product/12

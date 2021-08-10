@@ -13,8 +13,7 @@ from basketapp.models import Basket
 from mainapp.models import Product
 from ordersapp.forms import OrderItemForm
 from ordersapp.models import Order, OrderItem
-
-
+# cheipaeCh9Ei
 
 class OrderList(LoginRequiredMixin, ListView):
     model = Order

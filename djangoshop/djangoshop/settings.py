@@ -161,9 +161,6 @@ EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_PORT = '465'
 EMAIL_USE_TLS = True
 
-# GIT_HUB_ID = '6a01287be54660261eec'
-# GIT_HUB_KEY_SECRET = '4d7c7148d18532babde62524410917785235facc'
-
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.github.GithubOAuth2',

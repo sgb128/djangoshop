@@ -13,7 +13,7 @@ from basketapp.models import Basket
 from mainapp.models import Product
 from ordersapp.forms import OrderItemForm
 from ordersapp.models import Order, OrderItem
-
+# cheipaeCh9Ei
 
 class OrderList(LoginRequiredMixin, ListView):
     model = Order
@@ -132,7 +132,7 @@ def order_forming_complete(request, pk):
 @receiver(pre_save, sender=OrderItem)
 @receiver(pre_save, sender=Basket)
 def product_quantity_update_save(sender, update_fields, instance, **kwargs):
-    if update_fields is 'quantity' 'product':
+    if update_fields == 'quantity' 'product':
         if instance.pk:
             instance.product.quantity -= instance.quantity.sender.get_item(instance.pk).quantity
         else:

@@ -130,6 +130,7 @@ def products(request, pk=None, page=1):
             'category': category,
         }
         return render(request=request, template_name='mainapp/products.html', context=context)
+
     context = {
         'title': title,
         'links_menu': links_menu,
